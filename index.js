@@ -64,7 +64,7 @@ client.on('ready', (ready) => {
 
   const array = [
     {
-      name: `Restableciendo módulo 1, por favor espere...`,
+      name: `Apple Music`,
       type: "LISTENING"
     }
   ]
@@ -80,9 +80,13 @@ client.on('ready', (ready) => {
   console.log(`Se ha iniciado sesión en ${client.user.tag}\n︵˚₊‿︵₊ Consola: ‿︵˚₊‿︵˚₊‧`)
 })
 
+
 client.on('message', message => {
 
-  let prefix = ":"
+  let prefix = "-"
+
+  if (!message.content.startsWith(prefix)) return
+  if (message.author.bot) return;
 
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
@@ -91,7 +95,6 @@ client.on('message', message => {
   if (!command) command = client.commands.get(client.aliases.get(cmd))
   if (!command) return
   if (command) command.run(client, message, args)
-
 
 });
 
