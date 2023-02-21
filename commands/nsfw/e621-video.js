@@ -39,13 +39,18 @@ module.exports = {
     //kyro coder, pro
     console.log(results)
     const mensajeee = createEmbeds(results, client, roleColor, message.author)
-    if(!mensajeee) return message.channel.send(`Un error ha ocurrido al intentar general el embed`)
+    if(!mensajeee) return message.channel.send(`¡No se ha encontrado nada! Trata de buscar como si fuese e621, si necesitas ayuda ejecuta __**:help-e621**__`)
 
     message.lineReply(mensajeee)
   }
 }
-function createEmbeds(data, bot, color, author){
+function createEmbeds(data, bot, color, author)
+{
+ try{
     let mensajeee = `<:rem_pin:935684311099777104> **Artist(s):** ${data.tags.artist}\n<a:furr_blossom:837401291155570739> **E621 Post:** __***e621.net/posts/${data.id}***__\n<:rem_pinkheart:935615029577916427> **Type:** ${data.file.ext}\n<:rem_arrow2:935684310369964083> **Resolution:** ${data.file.width}x${data.file.height}\n<:rem_blankbutterfly:935624476945694750> **Descarga:** ${data.file.url}\n\n**Información:**\n> **Personaje(s):** ${data.tags.character}\n> **¿Copyright?:** ${data.tags.copyright}\n> **Score:** <:arrowup:945446546462376016> ${data.score.up} <:arrowdown:945446547154432010> ${data.score.down} <:arrow:945446545317314591> ${data.score.total} <:furr_perfect_condition:840657564050915377> ${data.fav_count}\n> **Rating:** ${data.rating}\n> **Descripción:** ${data.description} `
 
   return mensajeee
+  }catch(err){
+    return null
+  }
 }
