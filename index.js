@@ -83,7 +83,7 @@ client.on('ready', (ready) => {
 
 client.on('message', message => {
 
-  let prefix = "-"
+  let prefix = ":"
 
   if (!message.content.startsWith(prefix)) return
   if (message.author.bot) return;
